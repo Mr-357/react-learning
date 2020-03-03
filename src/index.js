@@ -1,12 +1,35 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+class Hello extends React.Component{
+	constructor(props){
+		super(props);
+		this.state = { time : new Date()};
+	}
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+	tick(){
+		this.setState({time: new Date()});
+	}
+
+	componentDidMount(){
+		this.timerID = setInterval(()=>this.tick(),1000);
+	}
+
+	componentWillUnmount(){
+		clearInterval(this.timerID);
+	}
+
+	render(){
+		return (
+			<div>
+				<h3 onClick={()=>alert("clicked")}>Hello World! Number: {this.props.number}, Time:{this.state.time.toLocaleTimeString()}</h3>
+			</div>
+		);
+	}
+}
+
+
+ReactDOM.render(
+	<Hello number="5" />,
+	document.getElementById('root')
+);
