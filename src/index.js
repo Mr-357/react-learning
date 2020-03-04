@@ -1,5 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {  BrowserRouter,
+	Switch,
+	Route,
+	Link } from 'react-router-dom';
 
 class Hello extends React.Component{
 	constructor(props){
@@ -28,8 +32,27 @@ class Hello extends React.Component{
 	}
 }
 
+let int = 0;
+function inc(){
+	int++;
+}
+const App = () => (
+	<div>
+		<nav>
+			<Link to="/test" onClick={inc}>Test</Link>
+		</nav>
+		<div>
+			<Route path="/test" //component={Hello}></Route>
+				render={(props)=><Hello {...props} number={int} ></Hello>}
+			></Route>
+		</div>
+	</div>
+);
 
 ReactDOM.render(
-	<Hello number="5" />,
+	<BrowserRouter>
+		<App />
+	</BrowserRouter>
+	,
 	document.getElementById('root')
 );
