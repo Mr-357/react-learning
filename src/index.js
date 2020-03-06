@@ -1,9 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {  BrowserRouter,
-	Switch,
-	Route,
-	Link } from 'react-router-dom';
+import {  BrowserRouter,Switch,Route } from 'react-router-dom';
+import './app/components/Navigation/nav.css'
+import Navigation from './app/components/Navigation/Navigation.js'
 
 class Hello extends React.Component{
 	constructor(props){
@@ -32,19 +31,24 @@ class Hello extends React.Component{
 	}
 }
 
-let int = 0;
-function inc(){
-	int++;
-}
+
+
 const App = () => (
 	<div>
-		<nav>
-			<Link to="/test" onClick={inc}>Test</Link>
-		</nav>
+		<Navigation></Navigation>
 		<div>
-			<Route path="/test" //component={Hello}></Route>
-				render={(props)=><Hello {...props} number={int} ></Hello>}
-			></Route>
+		<Switch>
+			<Route exact path ="/">
+				<Hello></Hello>
+				{/* home component */}
+			</Route>
+			<Route path="/cars">
+				{/* cars list component */}
+			</Route>
+			<Route path="*">
+				{/* 404 page */}
+			</Route>
+		</Switch>
 		</div>
 	</div>
 );

@@ -1,0 +1,7 @@
+.navItem{
+    display: inline;
+    margin: 1px;
+    border: solid 1px black;
+    padding-left: 10px;
+    padding-right: 10px;
+}
