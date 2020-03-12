@@ -1,15 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-const Login = ({user}) => {
+import { Link } from 'react-router-dom';
+import { useHistory } from "react-router-dom";
+const Login = ({user, logout}) => {
     let button;
-	console.log(user);
-	if(!user=='') {
-		 button = <button>Logout</button>
+    const history = useHistory();
+    function goHome(){
+        history.push('/');
+    }
+	if(user!=='') {
+		 button = <button onClick={e => {e.preventDefault();logout();goHome();}}>Logout{','+user}</button>
 	} else {
-		button = <button>Login</button>
+		button = <Link to='/login'>Login</Link>
     }
     return (<span>
-        {button},{user}
+        {button}
     </span>);
 }
 

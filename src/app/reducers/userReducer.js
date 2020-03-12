@@ -1,10 +1,12 @@
 const users = (state = {user:''}, action) => {
 
     switch(action.type){
-        case 'LOGIN':
+        case 'LOGIN_SUCCESS':
             return action.user;
+        case 'LOGIN_ERROR':
+            return {user: ''};
         case 'LOGOUT':
-            return '';
+            return {user:''};
         default:
             return state;
     }

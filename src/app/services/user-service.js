@@ -13,7 +13,13 @@ export default async function getToken(username, password) {
         'password': password,
         'username': username
     };
-
-   let req = (await axios.post('/login', login)).data;
+    let req;
+    try {
+       req = (await (await axios.post('/login', login)).data);
+    } catch (error) {
+        
+        req = error;
+    }
+  
    return req;
 }

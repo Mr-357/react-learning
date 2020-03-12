@@ -1,11 +1,19 @@
 import { connect } from 'react-redux';
 import Login from '../components/Buttons/Login';
+import { logout } from '../actions/userActions';
 
 const mapStateToProps = state => {
-    console.log('map',state.user);
     return {
         user: state.user
     }
 }
 
-export default connect(mapStateToProps)(Login);
+const mapDispatchToProps = dispatch => {
+    return {
+        logout: () => {
+            dispatch(logout());
+        }
+    }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(Login);
