@@ -9,7 +9,6 @@ function Navigation() {
 			<ul>
 				<li className="navItem"><Link to="/">Home</Link></li>
 				<li className="navItem"><Link to="/cars">Cars</Link></li>
-			
 			<li className="navItem login"><LoginUser></LoginUser></li>
 			</ul>
 		</nav>

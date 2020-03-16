@@ -1,12 +1,21 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import {login} from '../../actions/userActions'
+import {login} from '../../actions/userActions';
+import { useHistory } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 const Login = ({user,dispatch}) => {
     let username,password,error;
+    const history = useHistory();
+    function goHome(){
+        history.push('/');
+    }
+    if(user!==''){
+        goHome();
+    }
     return(
         <div>
-            <form onSubmit={e=>{
+            <form onSubmit={(e)=>{
                 e.preventDefault();
                 if(!username.value.trim()){
                     //empty username
@@ -36,6 +45,7 @@ const Login = ({user,dispatch}) => {
             }></input>
             <button type='submit'>Login</button>
             </form>
+            <Link to='/register'>Register</Link>
         </div>
     );
 }

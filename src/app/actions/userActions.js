@@ -23,8 +23,11 @@ function fetchToken(username,password){
        getToken(username,password).then(data =>{
           
            if(!(data instanceof Error)){
-            data.user=username;
-            dispatch(login_success(data));
+               console.log(data)
+            localStorage.setItem('token',data.access_token);
+            let response = {};
+            response.user=username;
+            dispatch(login_success(response));
            }
        
         else

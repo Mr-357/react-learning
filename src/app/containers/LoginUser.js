@@ -11,6 +11,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         logout: () => {
+            localStorage.clear();
             dispatch(logout());
         }
     }

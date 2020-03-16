@@ -6,10 +6,10 @@ import { createStore, applyMiddleware } from 'redux'
 import Navigation from './app/components/Navigation/Navigation.js';
 import rootReducer from './app/reducers/rootReducer.js'
 import userReducer from './app/reducers/userReducer';
-import getToken from './app/services/user-service';//
-import {login_success,logout} from './app/actions/userActions.js';
+
 import thunkMiddleware from 'redux-thunk';
 import Login from './app/components/Login/Login.js';
+import Register from './app/components/Register/Register.js';
 const store = createStore(userReducer,applyMiddleware(thunkMiddleware));
 class Hello extends React.Component{  // placeholder, testing component, to be removed
 	constructor(props){
@@ -29,22 +29,11 @@ class Hello extends React.Component{  // placeholder, testing component, to be r
 		clearInterval(this.timerID);
 	}
 
-	 async testLogin(){
-		let token;
-		console.log(await getToken('asdf','asdf'));
-	
-	}
-
-	testLogout(){
-		store.dispatch(logout());
-	}
 
 	render(){
 		return (
 			<div>
 				<h3 onClick={()=>alert("clicked")}>Hello World! Number: {this.props.number}, Time:{this.state.time.toLocaleTimeString()}</h3>
-				<button onClick={()=>this.testLogin()}>TEST login</button>
-				<button onClick={()=>this.testLogout()}>TEST logout</button>
 			</div>
 		);
 	}
@@ -62,6 +51,9 @@ const App = () => (
 			</Route>
 			<Route path = '/login'>
 				<Login></Login>
+			</Route>
+			<Route path = '/register'>
+				<Register></Register>
 			</Route>
 			<Route path="/cars">
 				{/* cars list component */}
