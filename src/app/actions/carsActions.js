@@ -54,3 +54,71 @@ export const get_success = car =>({
     type:'GET_SUCCESS',
     car:car
 });
+
+export const like = () => ({
+    type:'LIKE'
+})
+
+export const like_success = (id) => ({
+    type:'LIKE_SUCCESS',
+    id:id
+})
+
+export const like_error = error =>({
+    type:'LIKE_ERROR',
+    error:error
+});
+
+export const dislike = () => ({
+    type:'DISLIKE'
+})
+
+export const dislike_success = (id) => ({
+    type:'DISLIKE_SUCCESS',
+    id:id
+})
+
+export const dislike_error = error =>({
+    type:'DISLIKE_ERROR',
+    error:error
+});
+
+
+
+export function getCars(){
+    return (dispatch) =>{
+        dispatch(_getCars());
+    }
+
+}
+
+function _getCars(){
+    return dispatch=>{
+        request('GET','/cars/',null).then(data=>{
+            if(!(data instanceof Error)){
+                console.log(data.data);
+                return fetch_success(data.data);
+            }
+        });
+    }
+}
+
+export function getCar(id){
+
+}
+
+export function editCar(car){
+
+}
+
+export function deleteCar(id){
+
+}
+
+export function likeCar(id){
+
+}
+
+export function dislikeCar(id){
+
+}

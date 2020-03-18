@@ -6,7 +6,7 @@ import { createStore, applyMiddleware } from 'redux'
 import Navigation from './app/components/Navigation/Navigation.js';
 import rootReducer from './app/reducers/rootReducer.js'
 import userReducer from './app/reducers/userReducer';
-import request from './app/services/cars-service'
+import {getCars} from './app/actions/carsActions'
 import thunkMiddleware from 'redux-thunk';
 import Login from './app/components/Login/Login.js';
 import Register from './app/components/Register/Register.js';
@@ -30,7 +30,7 @@ class Hello extends React.Component{  // placeholder, testing component, to be r
 	}
 
 	test(){
-		console.log(request('GET','/cars/',localStorage.getItem('token')));
+		store.dispatch(getCars());
 	}
 	render(){
 		return (
