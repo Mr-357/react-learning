@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { useHistory } from "react-router-dom";
 
-const Login = ({user, logout}) => {
+const LoginButton = ({user, logout}) => {
     let button;
     const history = useHistory();
     function goHome(){
@@ -19,8 +19,9 @@ const Login = ({user, logout}) => {
     </span>);
 }
 
-Login.propTypes = {
-	user : PropTypes.string.isRequired
+LoginButton.propTypes = {
+    
+        user:PropTypes.string.isRequired
 }
 
-export default Login;
+export default LoginButton;

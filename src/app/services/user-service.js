@@ -15,7 +15,7 @@ export default async function getToken(username, password) {
     };
     let req;
     try {
-       req = (await (await axios.post('/login', login)).data);
+       req = (await  axios.post('/login', login)).data;
     } catch (error) {
         
         req = error;

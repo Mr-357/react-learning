@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import Login from '../components/Buttons/Login';
+import LoginButton from '../components/Buttons/LoginButton';
 import { logout } from '../actions/userActions';
 
 const mapStateToProps = state => {
@@ -17,4 +17,4 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(Login);
+export default connect(mapStateToProps,mapDispatchToProps)(LoginButton);

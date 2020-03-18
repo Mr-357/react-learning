@@ -6,7 +6,7 @@ import { createStore, applyMiddleware } from 'redux'
 import Navigation from './app/components/Navigation/Navigation.js';
 import rootReducer from './app/reducers/rootReducer.js'
 import userReducer from './app/reducers/userReducer';
-
+import request from './app/services/cars-service'
 import thunkMiddleware from 'redux-thunk';
 import Login from './app/components/Login/Login.js';
 import Register from './app/components/Register/Register.js';
@@ -29,11 +29,14 @@ class Hello extends React.Component{  // placeholder, testing component, to be r
 		clearInterval(this.timerID);
 	}
 
-
+	test(){
+		console.log(request('GET','/cars/',localStorage.getItem('token')));
+	}
 	render(){
 		return (
 			<div>
 				<h3 onClick={()=>alert("clicked")}>Hello World! Number: {this.props.number}, Time:{this.state.time.toLocaleTimeString()}</h3>
+				<button onClick={()=>this.test()}>TEST</button>
 			</div>
 		);
 	}
